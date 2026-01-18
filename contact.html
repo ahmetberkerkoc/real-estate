@@ -4,22 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oakline Realty — Contact</title>
+  <meta name="description" content="Contact Oakline Realty to book tours and ask about listings." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
+
 <body>
   <header>
     <div class="container">
       <div class="nav">
-        <a class="logo" href="index.html"><span class="logo-badge">🏡</span><span>Oakline Realty</span></a>
+        <a class="logo" href="index.html" aria-label="Oakline Realty Home">
+          <span class="logo-badge" aria-hidden="true">🏡</span>
+          <span>Oakline Realty</span>
+        </a>
 
         <nav>
-          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">
+            ☰ <span data-i18n="nav.menu">Menu</span>
+          </button>
+
           <ul id="navLinks">
-            <li><a data-page="index.html" href="index.html">Home</a></li>
-            <li><a data-page="listings.html" href="listings.html">Listings</a></li>
-            <li><a data-page="agents.html" href="agents.html">Agents</a></li>
-            <li><a data-page="contact.html" href="contact.html">Contact</a></li>
-            <li><a class="btn primary" href="listings.html">Browse Listings</a></li>
+            <li><a data-page="index.html" href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a data-page="listings.html" href="listings.html" data-i18n="nav.listings">Listings</a></li>
+            <li><a data-page="agents.html" href="agents.html" data-i18n="nav.agents">Agents</a></li>
+            <li><a data-page="contact.html" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+
+            <!-- Language selector -->
+            <li>
+              <select id="langSelect" aria-label="Language" title="Language">
+                <option value="en">EN</option>
+                <option value="tr">TR</option>
+                <option value="de">DE</option>
+                <option value="fr">FR</option>
+              </select>
+            </li>
+
+            <li><a class="btn primary" href="listings.html" data-i18n="contact.navBrowse">Browse Listings</a></li>
           </ul>
         </nav>
       </div>
@@ -30,8 +49,8 @@
     <div class="container">
       <div class="sectionHead">
         <div>
-          <h1>Contact</h1>
-          <p>Tell us what you’re looking for and we’ll get back to you.</p>
+          <h1 data-i18n="contact.title">Contact</h1>
+          <p data-i18n="contact.subtitle">Tell us what you’re looking for and we’ll get back to you.</p>
         </div>
       </div>
 
@@ -39,33 +58,64 @@
         <form id="contactForm">
           <div class="formGrid">
             <div class="field">
-              <label for="name">Full name</label>
-              <input id="name" name="name" placeholder="Jane Doe" required />
+              <label for="name" data-i18n="contact.fullNameLabel">Full name</label>
+              <input
+                id="name"
+                name="name"
+                required
+                placeholder="Jane Doe"
+                data-i18n-placeholder="contact.fullNamePlaceholder"
+              />
             </div>
+
             <div class="field">
-              <label for="email">Email</label>
-              <input id="email" type="email" name="email" placeholder="jane@example.com" required />
+              <label for="email" data-i18n="contact.emailLabel">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                placeholder="jane@example.com"
+                data-i18n-placeholder="contact.emailPlaceholder"
+              />
             </div>
+
             <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" placeholder="+90 5xx xxx xx xx" />
+              <label for="phone" data-i18n="contact.phoneLabel">Phone</label>
+              <input
+                id="phone"
+                name="phone"
+                placeholder="+90 5xx xxx xx xx"
+                data-i18n-placeholder="contact.phonePlaceholder"
+              />
             </div>
+
             <div class="field">
-              <label for="intent">I’m interested in</label>
+              <label for="intent" data-i18n="contact.intentLabel">I’m interested in</label>
               <select id="intent" name="intent">
-                <option>Buying</option>
-                <option>Renting</option>
-                <option>Investing</option>
-                <option>Commercial</option>
+                <option data-i18n="contact.intent.buying">Buying</option>
+                <option data-i18n="contact.intent.renting">Renting</option>
+                <option data-i18n="contact.intent.investing">Investing</option>
+                <option data-i18n="contact.intent.commercial">Commercial</option>
               </select>
             </div>
+
             <div class="field wide">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" placeholder="City, property type, budget, bedrooms, must-haves..." required></textarea>
+              <label for="message" data-i18n="contact.messageLabel">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                required
+                placeholder="City, property type, budget, bedrooms, must-haves..."
+                data-i18n-placeholder="contact.messagePlaceholder"
+              ></textarea>
             </div>
-            <button class="btn primary wide" type="submit">Send Message</button>
+
+            <button class="btn primary wide" type="submit" data-i18n="contact.sendBtn">Send Message</button>
           </div>
-          <p style="margin:12px 0 0; color:var(--muted); font-size:12px;">
+
+          <p style="margin:12px 0 0; color:var(--muted); font-size:12px;" data-i18n="contact.note">
             Demo form: no backend connected. Add a server/API later to receive messages.
           </p>
         </form>
@@ -73,7 +123,10 @@
 
       <footer>
         <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
-          <div><b style="color:var(--text)">Oakline Realty</b><br/>© <span data-year></span></div>
+          <div>
+            <b style="color:var(--text)">Oakline Realty</b><br/>
+            © <span data-year></span>
+          </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <span class="pill">hello@oakline.example</span>
             <span class="pill">+90 212 000 00 00</span>
@@ -83,12 +136,15 @@
     </div>
   </main>
 
-  <div class="toast" id="toast">
-    <div class="dot" style="margin-top:6px"></div>
-    <div><b id="toastTitle">Saved</b><p id="toastMsg">Done.</p></div>
-    <button class="x" id="toastClose">✕</button>
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="dot" style="margin-top:6px" aria-hidden="true"></div>
+    <div>
+      <b id="toastTitle">Saved</b>
+      <p id="toastMsg">Done.</p>
+    </div>
+    <button class="x" id="toastClose" aria-label="Close">✕</button>
   </div>
-
+  
   <script src="assets/app.js"></script>
 </body>
 </html>

@@ -4,22 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oakline Realty — Agents</title>
+  <meta name="description" content="Meet Oakline Realty agents and get local guidance for buying and renting." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
+
 <body>
   <header>
     <div class="container">
       <div class="nav">
-        <a class="logo" href="index.html"><span class="logo-badge">🏡</span><span>Oakline Realty</span></a>
+        <a class="logo" href="index.html" aria-label="Oakline Realty Home">
+          <span class="logo-badge" aria-hidden="true">🏡</span>
+          <span>Oakline Realty</span>
+        </a>
 
         <nav>
-          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">
+            ☰ <span data-i18n="nav.menu">Menu</span>
+          </button>
+
           <ul id="navLinks">
-            <li><a data-page="index.html" href="index.html">Home</a></li>
-            <li><a data-page="listings.html" href="listings.html">Listings</a></li>
-            <li><a data-page="agents.html" href="agents.html">Agents</a></li>
-            <li><a data-page="contact.html" href="contact.html">Contact</a></li>
-            <li><a class="btn primary" href="contact.html">Book a Tour</a></li>
+            <li><a data-page="index.html" href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a data-page="listings.html" href="listings.html" data-i18n="nav.listings">Listings</a></li>
+            <li><a data-page="agents.html" href="agents.html" data-i18n="nav.agents">Agents</a></li>
+            <li><a data-page="contact.html" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+
+            <!-- Language selector -->
+            <li>
+              <select id="langSelect" aria-label="Language" title="Language">
+                <option value="en">EN</option>
+                <option value="tr">TR</option>
+                <option value="de">DE</option>
+                <option value="fr">FR</option>
+              </select>
+            </li>
+
+            <li><a class="btn primary" href="contact.html" data-i18n="nav.bookTour">Book a Tour</a></li>
           </ul>
         </nav>
       </div>
@@ -30,38 +49,49 @@
     <div class="container">
       <div class="sectionHead">
         <div>
-          <h1>Agents</h1>
-          <p>Local knowledge, fast replies, honest guidance.</p>
+          <h1 data-i18n="agents.title">Agents</h1>
+          <p data-i18n="agents.subtitle">Local knowledge, fast replies, honest guidance.</p>
         </div>
       </div>
 
       <div class="grid">
         <div class="panel">
-          <h3>Elif Kaya</h3>
-          <p>Istanbul specialist • New builds, family homes • 8+ years</p>
+          <h3 data-i18n="agents.elif.name">Elif Kaya</h3>
+          <p data-i18n="agents.elif.desc">Istanbul specialist • New builds, family homes • 8+ years</p>
           <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <span class="chip">TR/EN</span><span class="chip">Negotiation</span><span class="chip">Relocation</span>
+            <span class="chip" data-i18n="agents.chip.tren">TR/EN</span>
+            <span class="chip" data-i18n="agents.chip.negotiation">Negotiation</span>
+            <span class="chip" data-i18n="agents.chip.relocation">Relocation</span>
           </div>
         </div>
+
         <div class="panel">
-          <h3>Mert Demir</h3>
-          <p>Ankara specialist • Investment & commercial • 6+ years</p>
+          <h3 data-i18n="agents.mert.name">Mert Demir</h3>
+          <p data-i18n="agents.mert.desc">Ankara specialist • Investment & commercial • 6+ years</p>
           <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <span class="chip">TR/EN</span><span class="chip">Commercial</span><span class="chip">ROI</span>
+            <span class="chip" data-i18n="agents.chip.tren">TR/EN</span>
+            <span class="chip" data-i18n="agents.chip.commercial">Commercial</span>
+            <span class="chip" data-i18n="agents.chip.roi">ROI</span>
           </div>
         </div>
+
         <div class="panel">
-          <h3>Deniz Arslan</h3>
-          <p>Izmir specialist • Villas, coastal living • 7+ years</p>
+          <h3 data-i18n="agents.deniz.name">Deniz Arslan</h3>
+          <p data-i18n="agents.deniz.desc">Izmir specialist • Villas, coastal living • 7+ years</p>
           <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <span class="chip">TR/EN</span><span class="chip">Luxury</span><span class="chip">Coastal</span>
+            <span class="chip" data-i18n="agents.chip.tren">TR/EN</span>
+            <span class="chip" data-i18n="agents.chip.luxury">Luxury</span>
+            <span class="chip" data-i18n="agents.chip.coastal">Coastal</span>
           </div>
         </div>
       </div>
 
       <footer>
         <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
-          <div><b style="color:var(--text)">Oakline Realty</b><br/>© <span data-year></span></div>
+          <div>
+            <b style="color:var(--text)">Oakline Realty</b><br/>
+            © <span data-year></span>
+          </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <span class="pill">hello@oakline.example</span>
             <span class="pill">+90 212 000 00 00</span>
@@ -71,12 +101,15 @@
     </div>
   </main>
 
-  <div class="toast" id="toast">
-    <div class="dot" style="margin-top:6px"></div>
-    <div><b id="toastTitle">Saved</b><p id="toastMsg">Done.</p></div>
-    <button class="x" id="toastClose">✕</button>
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="dot" style="margin-top:6px" aria-hidden="true"></div>
+    <div>
+      <b id="toastTitle">Saved</b>
+      <p id="toastMsg">Done.</p>
+    </div>
+    <button class="x" id="toastClose" aria-label="Close">✕</button>
   </div>
-
+  
   <script src="assets/app.js"></script>
 </body>
 </html>

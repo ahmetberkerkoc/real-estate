@@ -4,24 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oakline Realty — Home</title>
+  <meta name="description" content="Browse real estate listings, compare neighborhoods, and book tours." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
+
 <body>
   <header>
     <div class="container">
       <div class="nav">
-        <a class="logo" href="index.html">
-          <span class="logo-badge">🏡</span><span>Oakline Realty</span>
+        <a class="logo" href="index.html" aria-label="Oakline Realty Home">
+          <span class="logo-badge" aria-hidden="true">🏡</span>
+          <span>Oakline Realty</span>
         </a>
 
         <nav>
-          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">
+            ☰ <span data-i18n="nav.menu">Menu</span>
+          </button>
+
           <ul id="navLinks">
-            <li><a data-page="index.html" href="index.html">Home</a></li>
-            <li><a data-page="listings.html" href="listings.html">Listings</a></li>
-            <li><a data-page="agents.html" href="agents.html">Agents</a></li>
-            <li><a data-page="contact.html" href="contact.html">Contact</a></li>
-            <li><a class="btn primary" href="contact.html">Book a Tour</a></li>
+            <li><a data-page="index.html" href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a data-page="listings.html" href="listings.html" data-i18n="nav.listings">Listings</a></li>
+            <li><a data-page="agents.html" href="agents.html" data-i18n="nav.agents">Agents</a></li>
+            <li><a data-page="contact.html" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+
+            <!-- Language selector -->
+            <li>
+              <select id="langSelect" aria-label="Language" title="Language">
+                <option value="en">EN</option>
+                <option value="tr">TR</option>
+                <option value="de">DE</option>
+                <option value="fr">FR</option>
+              </select>
+            </li>
+
+            <li><a class="btn primary" href="contact.html" data-i18n="nav.bookTour">Book a Tour</a></li>
           </ul>
         </nav>
       </div>
@@ -32,18 +49,35 @@
     <div class="container">
       <div class="heroCard">
         <div class="heroInner">
-          <span class="pill"><span class="dot"></span> Verified listings • Local agents • Fast tours</span>
-          <h1>Find a home that fits your life.</h1>
-          <p class="sub">Browse curated properties, compare neighborhoods, and schedule tours in minutes.</p>
+          <span class="pill">
+            <span class="dot" aria-hidden="true"></span>
+            <span data-i18n="home.pill">Verified listings • Local agents • Fast tours</span>
+          </span>
+
+          <h1 data-i18n="home.heroTitle">Find a home that fits your life.</h1>
+
+          <p class="sub" data-i18n="home.heroSubtitle">
+            Browse curated properties, compare neighborhoods, and schedule tours in minutes.
+          </p>
+
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn primary" href="listings.html">Explore Listings →</a>
-            <a class="btn" href="contact.html">Talk to an Agent</a>
+            <a class="btn primary" href="listings.html" data-i18n="home.ctaExplore">Explore Listings →</a>
+            <a class="btn" href="contact.html" data-i18n="home.ctaAgent">Talk to an Agent</a>
           </div>
 
           <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-top:18px;">
-            <div class="panel"><h3 style="margin:0 0 6px;">240+</h3><p>Active listings</p></div>
-            <div class="panel"><h3 style="margin:0 0 6px;">24h</h3><p>Avg. response time</p></div>
-            <div class="panel"><h3 style="margin:0 0 6px;">4.9/5</h3><p>Client rating</p></div>
+            <div class="panel">
+              <h3 style="margin:0 0 6px;" data-i18n="home.stat1Value">240+</h3>
+              <p data-i18n="home.stat1Label">Active listings</p>
+            </div>
+            <div class="panel">
+              <h3 style="margin:0 0 6px;" data-i18n="home.stat2Value">24h</h3>
+              <p data-i18n="home.stat2Label">Avg. response time</p>
+            </div>
+            <div class="panel">
+              <h3 style="margin:0 0 6px;" data-i18n="home.stat3Value">4.9/5</h3>
+              <p data-i18n="home.stat3Label">Client rating</p>
+            </div>
           </div>
         </div>
       </div>
@@ -51,49 +85,76 @@
       <section class="section">
         <div class="sectionHead">
           <div>
-            <h2>Quick picks</h2>
-            <p>Jump into a few featured listings.</p>
+            <h2 data-i18n="home.quickTitle">Quick picks</h2>
+            <p data-i18n="home.quickSubtitle">Jump into a few featured listings.</p>
           </div>
-          <a class="pill" href="listings.html"><span class="dot"></span> View all</a>
+          <a class="pill" href="listings.html">
+            <span class="dot" aria-hidden="true"></span>
+            <span data-i18n="home.quickViewAll">View all</span>
+          </a>
         </div>
 
         <div class="grid">
           <article class="card">
-            <div class="thumb"><span class="tag">For Sale</span><div class="price">₺950,000</div></div>
+            <div class="thumb">
+              <span class="tag" data-i18n="home.card.sale">For Sale</span>
+              <div class="price">₺950,000</div>
+            </div>
             <div class="content">
-              <div class="titleRow"><h3>Modern Apartment • Kadıköy</h3></div>
-              <div class="meta">Istanbul • 2 bed • 1 bath • 92 m²</div>
-              <div class="facts"><span class="chip">Near metro</span><span class="chip">Balcony</span></div>
+              <div class="titleRow">
+                <h3 data-i18n="home.card1.title">Modern Apartment • Kadıköy</h3>
+              </div>
+              <div class="meta" data-i18n="home.card1.meta">Istanbul • 2 bed • 1 bath • 92 m²</div>
+              <div class="facts">
+                <span class="chip" data-i18n="home.card1.chip1">Near metro</span>
+                <span class="chip" data-i18n="home.card1.chip2">Balcony</span>
+              </div>
             </div>
             <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
-              <a class="btn" href="listing.html?id=p1">Details</a>
-              <a class="btn primary" href="contact.html">Book Tour</a>
+              <a class="btn" href="listing.html?id=p1" data-i18n="common.details">Details</a>
+              <a class="btn primary" href="contact.html" data-i18n="nav.bookTour">Book a Tour</a>
             </div>
           </article>
 
           <article class="card">
-            <div class="thumb"><span class="tag">For Sale</span><div class="price">₺4,200,000</div></div>
+            <div class="thumb">
+              <span class="tag" data-i18n="home.card.sale">For Sale</span>
+              <div class="price">₺4,200,000</div>
+            </div>
             <div class="content">
-              <div class="titleRow"><h3>Sea View Villa • Beylikdüzü</h3></div>
-              <div class="meta">Istanbul • 4 bed • 3 bath • 240 m²</div>
-              <div class="facts"><span class="chip">Garden</span><span class="chip">Parking</span></div>
+              <div class="titleRow">
+                <h3 data-i18n="home.card2.title">Sea View Villa • Beylikdüzü</h3>
+              </div>
+              <div class="meta" data-i18n="home.card2.meta">Istanbul • 4 bed • 3 bath • 240 m²</div>
+              <div class="facts">
+                <span class="chip" data-i18n="home.card2.chip1">Garden</span>
+                <span class="chip" data-i18n="home.card2.chip2">Parking</span>
+              </div>
             </div>
             <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
-              <a class="btn" href="listing.html?id=p2">Details</a>
-              <a class="btn primary" href="contact.html">Book Tour</a>
+              <a class="btn" href="listing.html?id=p2" data-i18n="common.details">Details</a>
+              <a class="btn primary" href="contact.html" data-i18n="nav.bookTour">Book a Tour</a>
             </div>
           </article>
 
           <article class="card">
-            <div class="thumb"><span class="tag">For Sale</span><div class="price">₺3,100,000</div></div>
+            <div class="thumb">
+              <span class="tag" data-i18n="home.card.sale">For Sale</span>
+              <div class="price">₺3,100,000</div>
+            </div>
             <div class="content">
-              <div class="titleRow"><h3>Family Villa • Urla</h3></div>
-              <div class="meta">Izmir • 3 bed • 2 bath • 190 m²</div>
-              <div class="facts"><span class="chip">Smart home</span><span class="chip">Sunset view</span></div>
+              <div class="titleRow">
+                <h3 data-i18n="home.card3.title">Family Villa • Urla</h3>
+              </div>
+              <div class="meta" data-i18n="home.card3.meta">Izmir • 3 bed • 2 bath • 190 m²</div>
+              <div class="facts">
+                <span class="chip" data-i18n="home.card3.chip1">Smart home</span>
+                <span class="chip" data-i18n="home.card3.chip2">Sunset view</span>
+              </div>
             </div>
             <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
-              <a class="btn" href="listing.html?id=p6">Details</a>
-              <a class="btn primary" href="contact.html">Book Tour</a>
+              <a class="btn" href="listing.html?id=p6" data-i18n="common.details">Details</a>
+              <a class="btn primary" href="contact.html" data-i18n="nav.bookTour">Book a Tour</a>
             </div>
           </article>
         </div>
@@ -101,7 +162,12 @@
 
       <footer>
         <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
-          <div><b style="color:var(--text)">Oakline Realty</b><br/>© <span data-year></span></div>
+          <div>
+            <b style="color:var(--text)">Oakline Realty</b><br/>
+            <span data-i18n="footer.copyright">
+              © <span data-year></span>
+            </span>
+          </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <span class="pill">hello@oakline.example</span>
             <span class="pill">+90 212 000 00 00</span>
@@ -111,12 +177,15 @@
     </div>
   </main>
 
-  <div class="toast" id="toast">
-    <div class="dot" style="margin-top:6px"></div>
-    <div><b id="toastTitle">Saved</b><p id="toastMsg">Done.</p></div>
-    <button class="x" id="toastClose">✕</button>
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="dot" style="margin-top:6px" aria-hidden="true"></div>
+    <div>
+      <b id="toastTitle">Saved</b>
+      <p id="toastMsg">Done.</p>
+    </div>
+    <button class="x" id="toastClose" aria-label="Close">✕</button>
   </div>
-
+  
   <script src="assets/app.js"></script>
 </body>
 </html>
