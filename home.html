@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tulum Realty — Welcome</title>
+  <meta name="description" content="Luxury homes. Simple search. Fast tours." />
+
+  <!-- Keep your global styles -->
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <style>
+    /* Simple luxury splash */
+    body{ margin:0; }
+
+    .splash{
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: #060913;
+    }
+
+    /* Background image (replace the url with your own image path) */
+    .bg{
+      position:absolute;
+      inset:0;
+
+      /* HIGH QUALITY BACKGROUND HANDLING */
+      background-image:
+        linear-gradient(180deg,
+          rgba(6,9,19,.30) 0%,
+          rgba(6,9,19,.55) 55%,
+          rgba(6,9,19,.85) 100%
+        ),
+        url("assets/img/home.png");
+
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      /* KEY CHANGE: better fitting + sharpness */
+      background-size: max(120vw, 120vh);
+
+      image-rendering: auto;
+
+      filter:
+        saturate(1.12)
+        contrast(1.10)
+        brightness(1.02);
+
+      transform: translateZ(0);
+    }
+
+    @media (max-width: 768px){
+    .bg{
+      background-position: center top;
+      background-size: cover;
+    }
+  }
+
+
+
+    /* Subtle moving light beams / glow */
+    .lights{
+      position:absolute;
+      inset:-40%;
+      pointer-events:none;
+      background:
+        radial-gradient(closest-side at 20% 30%, rgba(255,255,255,.14), transparent 60%),
+        radial-gradient(closest-side at 80% 20%, rgba(59,130,246,.16), transparent 62%),
+        radial-gradient(closest-side at 60% 85%, rgba(34,197,94,.10), transparent 62%),
+        radial-gradient(closest-side at 35% 75%, rgba(245,158,11,.10), transparent 62%);
+      filter: blur(22px);
+      animation: drift 10s ease-in-out infinite;
+      mix-blend-mode: screen;
+      opacity: .9;
+    }
+
+    @keyframes drift{
+      0%   { transform: translate(0,0) rotate(0deg); }
+      50%  { transform: translate(3.5%, -2.5%) rotate(1.2deg); }
+      100% { transform: translate(0,0) rotate(0deg); }
+    }
+
+    /* Center content */
+    .center{
+      position: relative;
+      z-index: 2;
+      width: min(720px, 100%);
+      text-align: center;
+    }
+
+    .logoMark{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.92);
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .logoMark span:first-child{
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    h1{
+      margin: 16px 0 10px;
+      font-size: clamp(30px, 4.8vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -0.6px;
+      color: rgba(255,255,255,.95);
+      text-shadow: 0 18px 40px rgba(0,0,0,.50);
+    }
+
+    p{
+      margin: 0 auto 18px;
+      max-width: 60ch;
+      color: rgba(255,255,255,.78);
+      font-size: 15.5px;
+      text-shadow: 0 14px 32px rgba(0,0,0,.45);
+    }
+
+    /* Fancy but simple button */
+    .startBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.14);
+      color: rgba(255,255,255,.96);
+      text-decoration:none;
+      font-weight: 750;
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .startBtn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.30);
+    }
+    .startBtn:active{
+      transform: translateY(0px);
+    }
+
+    /* Small hint at bottom */
+    .credit{
+      position:absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 2;
+      display:flex;
+      justify-content: space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      text-shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+
+    /* Mobile spacing */
+    @media (max-width: 520px){
+      .startBtn{ width: 100%; }
+      .credit{ justify-content:center; text-align:center; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="splash">
+    <div class="bg" aria-hidden="true"></div>
+    <div class="lights" aria-hidden="true"></div>
+
+    <div class="center">
+      <div class="logoMark" aria-label="Tulum Realty">
+        <span aria-hidden="true">🏡</span>
+        <span>Tulum Realty</span>
+      </div>
+
+      <h1>Luxury homes, made simple.</h1>
+      <p>Browse verified listings and book tours with local experts — in minutes.</p>
+
+      <!-- Single CTA to your existing app home -->
+      <a class="startBtn" href="index.html">
+        Let’s start finding your home →
+      </a>
+    </div>
+
+    <div class="credit">
+      <span>© <span data-year></span> Tulum Realty</span>
+      <span>Verified listings • Local agents • Fast tours</span>
+    </div>
+  </main>
+
+  <!-- For year only (optional). If you prefer, remove this script and hardcode year. -->
+  <script>
+    document.querySelectorAll("[data-year]").forEach(el => el.textContent = new Date().getFullYear());
+  </script>
+</body>
+</html>

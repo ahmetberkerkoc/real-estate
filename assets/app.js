@@ -198,7 +198,9 @@ const I18N = {
     "toast.msgDone": "Done.",
     "common.close": "Close",
     "tag.forSale": "For Sale",
-    "tag.forRent": "For Rent"
+    "tag.forRent": "For Rent",
+
+    
 
 
   },
