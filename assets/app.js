@@ -187,7 +187,18 @@ const I18N = {
     "nearby.universities": "Universities",
     "nearby.loading": "Loading nearby places…",
     "nearby.none": "No nearby places found.",
-    "nearby.error": "Couldn’t load nearby places right now."
+    "nearby.error": "Couldn’t load nearby places right now.",
+
+    "meta.listingTitle": "Tulum Realty — Listing",
+    "meta.listingDescription": "View listing details, features, and location map.",
+    "aria.logoHome": "Tulum Realty Home",
+    "aria.mapTitle": "OpenStreetMap",
+    "detail.tagFallback": "For Sale",
+    "toast.titleSaved": "Saved",
+    "toast.msgDone": "Done.",
+    "common.close": "Close",
+    "tag.forSale": "For Sale",
+    "tag.forRent": "For Rent"
 
 
   },
@@ -373,7 +384,18 @@ const I18N = {
   "nearby.universities": "Üniversiteler",
   "nearby.loading": "Yakındaki yerler yükleniyor…",
   "nearby.none": "Yakında sonuç bulunamadı.",
-  "nearby.error": "Yakındaki yerler şu an yüklenemedi."
+  "nearby.error": "Yakındaki yerler şu an yüklenemedi.",
+
+  "meta.listingTitle": "Tulum Emlak — İlan",
+  "meta.listingDescription": "İlan detaylarını, özellikleri ve konum haritasını görüntüleyin.",
+  "aria.logoHome": "Tulum Emlak Ana Sayfa",
+  "aria.mapTitle": "OpenStreetMap",
+  "detail.tagFallback": "Satılık",
+  "toast.titleSaved": "Kaydedildi",
+  "toast.msgDone": "Tamamlandı.",
+  "common.close": "Kapat",
+  "tag.forSale": "Satılık",
+  "tag.forRent": "Kiralık"
 
   },
 
@@ -559,7 +581,18 @@ const I18N = {
   "nearby.universities": "Universitäten",
   "nearby.loading": "Nahegelegene Orte werden geladen …",
   "nearby.none": "Keine nahegelegenen Orte gefunden.",
-  "nearby.error": "Nahegelegene Orte konnten derzeit nicht geladen werden."
+  "nearby.error": "Nahegelegene Orte konnten derzeit nicht geladen werden.",
+
+  "meta.listingTitle": "Tulum Realty — Exposé",
+  "meta.listingDescription": "Details, Ausstattung und Lage der Immobilie ansehen.",
+  "aria.logoHome": "Tulum Realty Startseite",
+  "aria.mapTitle": "OpenStreetMap",
+  "detail.tagFallback": "Zum Verkauf",
+  "toast.titleSaved": "Gespeichert",
+  "toast.msgDone": "Erledigt.",
+  "common.close": "Schließen",
+  "tag.forSale": "Zum Verkauf",
+  "tag.forRent": "Zur Miete"
   },
 
   fr: {
@@ -743,7 +776,18 @@ const I18N = {
   "nearby.universities": "Universités",
   "nearby.loading": "Chargement des lieux à proximité…",
   "nearby.none": "Aucun lieu à proximité trouvé.",
-  "nearby.error": "Impossible de charger les lieux à proximité pour le moment."
+  "nearby.error": "Impossible de charger les lieux à proximité pour le moment.",
+
+  "meta.listingTitle": "Tulum Realty — Annonce",
+  "meta.listingDescription": "Consultez les détails, les caractéristiques et la carte de localisation du bien.",
+  "aria.logoHome": "Accueil Tulum Realty",
+  "aria.mapTitle": "OpenStreetMap",
+  "detail.tagFallback": "À vendre",
+  "toast.titleSaved": "Enregistré",
+  "toast.msgDone": "Terminé.",
+  "common.close": "Fermer",
+  "tag.forSale": "À vendre",
+  "tag.forRent": "À louer"
 }
 
 };

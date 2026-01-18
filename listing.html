@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tulum Realty — Listing</title>
-  <meta name="description" content="View listing details, features, and location map." />
+  <title data-i18n="meta.listingTitle">Tulum Realty — Listing</title>
+  <meta name="description" data-i18n-attr="content" data-i18n="meta.listingDescription"
+      content="View listing details, features, and location map." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 
@@ -12,7 +13,7 @@
   <header>
     <div class="container">
       <div class="nav">
-        <a class="logo" href="index.html" aria-label="Tulum Realty Home">
+       <a class="logo" href="index.html" data-i18n-attr="aria-label" data-i18n="aria.logoHome" aria-label="Tulum Realty Home">
           <span class="logo-badge" aria-hidden="true">🏡</span>
           <span>Tulum Realty</span>
         </a>
@@ -50,7 +51,7 @@
       <div class="panel" id="listingDetail">
         <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
           <div>
-            <div class="pill"><span class="dot" aria-hidden="true"></span> <span id="detailTag">For Sale</span></div>
+            <div class="pill"><span class="dot" aria-hidden="true"></span> <span id="detailTag" data-i18n="detail.tagFallback">For Sale</span></div>
             <h1 id="detailTitle" style="margin:10px 0 6px;" data-i18n="detail.titleFallback">Listing</h1>
             <p id="detailMeta" style="margin:0; color:var(--muted);">—</p>
           </div>
@@ -76,13 +77,15 @@
             <iframe
               id="osmMap"
               title="OpenStreetMap"
+              data-i18n-attr="title"
+              data-i18n="aria.mapTitle"
               style="width:100%; height:240px; border:0; border-radius:16px;"
               loading="lazy"
             ></iframe>
             <p style="margin:10px 0 0; color:var(--muted); font-size:12px;" data-i18n="detail.locationNote">
-              
               Map uses OpenStreetMap embed.
             </p>
+
             <hr style="border:none; border-top:1px solid rgba(0,0,0,.08); margin:12px 0;" />
 
             <h3 style="margin:0 0 8px; font-size:16px;" data-i18n="detail.nearbyTitle">Nearby</h3>
@@ -186,10 +189,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite">
     <div class="dot" style="margin-top:6px" aria-hidden="true"></div>
     <div>
-      <b id="toastTitle">Saved</b>
-      <p id="toastMsg">Done.</p>
-    </div>
-    <button class="x" id="toastClose" aria-label="Close">✕</button>
+      <b id="toastTitle" data-i18n="toast.titleSaved">Saved</b>
+      <p id="toastMsg" data-i18n="toast.msgDone">Done.</p>
+      <button class="x" id="toastClose" data-i18n-attr="aria-label" data-i18n="common.close" aria-label="Close">✕</button>
+
   </div>
   
   <script src="assets/app.js"></script>
