@@ -56,7 +56,7 @@ const I18N = {
     "home.card3.chip1": "Smart home",
     "home.card3.chip2": "Sunset view",
 
-    "footer.copyright": "© {year}",
+    "footer.copyright": "© {2026}",
 
     // Listings page
     "listings.title": "Listings",
@@ -233,7 +233,7 @@ const I18N = {
   "home.card3.chip1": "Akıllı ev",
   "home.card3.chip2": "Gün batımı manzarası",
 
-  "footer.copyright": "© {year}",
+  "footer.copyright": "© {2026}",
 
   // Listings page
   "listings.title": "İlanlar",
@@ -408,7 +408,7 @@ const I18N = {
   "home.card3.chip1": "Smart Home",
   "home.card3.chip2": "Sonnenuntergang",
 
-  "footer.copyright": "© {year}",
+  "footer.copyright": "© {2026}",
 
   // Listings page
   "listings.title": "Angebote",
@@ -582,7 +582,7 @@ const I18N = {
   "home.card3.chip1": "Maison connectée",
   "home.card3.chip2": "Vue coucher de soleil",
 
-  "footer.copyright": "© {year}",
+  "footer.copyright": "© {2026}",
 
   // Listings page
   "listings.title": "Annonces",

@@ -66,7 +66,7 @@ const I18N = {
     "home.card3.chip1": "Smart home",
     "home.card3.chip2": "Sunset view",
 
-    "footer.copyright": "© {year}",
+    "footer.copyright": "© {2026}",
 
     // Listings page
     "listings.title": "Listings",
@@ -178,9 +178,16 @@ const I18N = {
     "agents.chip.commercial": "Commercial",
     "agents.chip.roi": "ROI",
     "agents.chip.luxury": "Luxury",
-    "agents.chip.coastal": "Coastal"
-
-
+    "agents.chip.coastal": "Coastal",
+    // Listing detail - nearby places
+    "detail.nearbyTitle": "Nearby",
+    "detail.nearbyNote": "Fetched from OpenStreetMap (Overpass). Distances are approximate.",
+    "nearby.hospitals": "Hospitals",
+    "nearby.airports": "Airports",
+    "nearby.universities": "Universities",
+    "nearby.loading": "Loading nearby places…",
+    "nearby.none": "No nearby places found.",
+    "nearby.error": "Couldn’t load nearby places right now."
 
 
   },
@@ -243,7 +250,7 @@ const I18N = {
   "home.card3.chip1": "Akıllı ev",
   "home.card3.chip2": "Gün batımı manzarası",
 
-  "footer.copyright": "© {year}",
+  "footer.copyright": "© {2026}",
 
   // Listings page
   "listings.title": "İlanlar",
@@ -356,7 +363,18 @@ const I18N = {
   "agents.chip.commercial": "Ticari",
   "agents.chip.roi": "Yatırım Getirisi",
   "agents.chip.luxury": "Lüks",
-  "agents.chip.coastal": "Sahil"
+  "agents.chip.coastal": "Sahil",
+
+    // Listing detail - nearby places
+  "detail.nearbyTitle": "Yakın Yerler",
+  "detail.nearbyNote": "OpenStreetMap (Overpass) üzerinden alınır. Mesafeler yaklaşık değerlerdir.",
+  "nearby.hospitals": "Hastaneler",
+  "nearby.airports": "Havalimanları",
+  "nearby.universities": "Üniversiteler",
+  "nearby.loading": "Yakındaki yerler yükleniyor…",
+  "nearby.none": "Yakında sonuç bulunamadı.",
+  "nearby.error": "Yakındaki yerler şu an yüklenemedi."
+
   },
 
 
@@ -418,7 +436,7 @@ const I18N = {
   "home.card3.chip1": "Smart Home",
   "home.card3.chip2": "Sonnenuntergang",
 
-  "footer.copyright": "© {year}",
+  "footer.copyright": "© {2026}",
 
   // Listings page
   "listings.title": "Angebote",
@@ -531,7 +549,17 @@ const I18N = {
   "agents.chip.commercial": "Gewerbe",
   "agents.chip.roi": "Rendite",
   "agents.chip.luxury": "Luxus",
-  "agents.chip.coastal": "Küste"
+  "agents.chip.coastal": "Küste",
+
+  // Listing detail - nearby places
+  "detail.nearbyTitle": "In der Nähe",
+  "detail.nearbyNote": "Daten von OpenStreetMap (Overpass). Entfernungen sind ungefähre Angaben.",
+  "nearby.hospitals": "Krankenhäuser",
+  "nearby.airports": "Flughäfen",
+  "nearby.universities": "Universitäten",
+  "nearby.loading": "Nahegelegene Orte werden geladen …",
+  "nearby.none": "Keine nahegelegenen Orte gefunden.",
+  "nearby.error": "Nahegelegene Orte konnten derzeit nicht geladen werden."
   },
 
   fr: {
@@ -592,7 +620,7 @@ const I18N = {
   "home.card3.chip1": "Maison connectée",
   "home.card3.chip2": "Vue coucher de soleil",
 
-  "footer.copyright": "© {year}",
+  "footer.copyright": "© {2026}",
 
   // Listings page
   "listings.title": "Annonces",
@@ -705,10 +733,151 @@ const I18N = {
   "agents.chip.commercial": "Commercial",
   "agents.chip.roi": "Rendement",
   "agents.chip.luxury": "Luxe",
-  "agents.chip.coastal": "Côtier"
+  "agents.chip.coastal": "Côtier",
+
+  // Listing detail - nearby places
+  "detail.nearbyTitle": "À proximité",
+  "detail.nearbyNote": "Données récupérées depuis OpenStreetMap (Overpass). Les distances sont approximatives.",
+  "nearby.hospitals": "Hôpitaux",
+  "nearby.airports": "Aéroports",
+  "nearby.universities": "Universités",
+  "nearby.loading": "Chargement des lieux à proximité…",
+  "nearby.none": "Aucun lieu à proximité trouvé.",
+  "nearby.error": "Impossible de charger les lieux à proximité pour le moment."
 }
 
 };
+
+
+// ----------------------------- OSM / OVERPASS HELPERS -----------------------------
+
+function haversineKm(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const toRad = (d) => (d * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+function overpassQuery(lat, lng, radiusM) {
+  // We query nodes+ways+relations for each category.
+  // Hospitals: amenity=hospital
+  // Universities: amenity=university
+  // Airports: aeroway=aerodrome (closest match to "airport" in OSM)
+  return `
+[out:json][timeout:25];
+(
+  nwr["amenity"="hospital"](around:${radiusM},${lat},${lng});
+  nwr["amenity"="university"](around:${radiusM},${lat},${lng});
+  nwr["aeroway"="aerodrome"](around:${radiusM},${lat},${lng});
+);
+out center tags;
+`.trim();
+}
+
+async function fetchOverpass(lat, lng, radiusM) {
+  const endpoint = "https://overpass-api.de/api/interpreter";
+  const body = new URLSearchParams({ data: overpassQuery(lat, lng, radiusM) });
+
+  // Some Overpass instances are picky; this one typically works in browsers.
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+      // A descriptive UA is polite; browsers may ignore it, but harmless.
+      "Accept": "application/json"
+    },
+    body
+  });
+
+  if (!res.ok) throw new Error(`Overpass HTTP ${res.status}`);
+  return res.json();
+}
+
+function normalizeOverpassElements(json) {
+  const els = json?.elements || [];
+  return els.map((el) => {
+    const name = el.tags?.name || el.tags?.["name:en"] || "Unnamed";
+    const kind =
+      el.tags?.amenity === "hospital"
+        ? "hospital"
+        : el.tags?.amenity === "university"
+        ? "university"
+        : el.tags?.aeroway === "aerodrome"
+        ? "airport"
+        : "other";
+
+    // nodes have lat/lon; ways/relations have "center"
+    const lat = el.lat ?? el.center?.lat;
+    const lng = el.lon ?? el.center?.lon;
+
+    return { id: `${el.type}/${el.id}`, name, kind, lat, lng, tags: el.tags || {} };
+  }).filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lng));
+}
+
+function groupNearby(list) {
+  return {
+    hospitals: list.filter(x => x.kind === "hospital"),
+    airports: list.filter(x => x.kind === "airport"),
+    universities: list.filter(x => x.kind === "university"),
+  };
+}
+
+function sortAndLimit(group, originLat, originLng, limit = 5) {
+  return group
+    .map(p => ({ ...p, distanceKm: haversineKm(originLat, originLng, p.lat, p.lng) }))
+    .sort((a, b) => a.distanceKm - b.distanceKm)
+    .slice(0, limit);
+}
+
+// Simple travel time estimate. Adjust if you want.
+function estimateMinutes(distanceKm, type) {
+  // airports often involve highways → faster avg
+  const speedKmh =
+    type === "airport" ? 60 :
+    type === "university" ? 35 :
+    30;
+  return Math.max(1, Math.round((distanceKm / speedKmh) * 60));
+}
+
+function renderNearbyUI({ hospitals, airports, universities }, lang) {
+  const section = (titleKey, items, typeKey) => {
+    const title = t(lang, titleKey) || titleKey;
+    if (!items.length) return "";
+
+    const rows = items.map(p => {
+      const km = p.distanceKm.toFixed(p.distanceKm < 10 ? 1 : 0);
+      const mins = estimateMinutes(p.distanceKm, typeKey);
+
+      return `
+        <div class="pill" style="display:flex; justify-content:space-between; gap:10px; align-items:center; padding:10px 12px;">
+          <span>${p.name}</span>
+          <span style="color:var(--muted); font-size:12px; white-space:nowrap;">
+            ${km} km • ~${mins} min
+          </span>
+        </div>
+      `;
+    }).join("");
+
+    return `
+      <div class="panel" style="padding:12px; border-radius:16px;">
+        <b style="display:block; margin-bottom:8px;">${title}</b>
+        <div style="display:grid; gap:8px;">${rows}</div>
+      </div>
+    `;
+  };
+
+  const html =
+    section("nearby.hospitals", hospitals, "hospital") +
+    section("nearby.airports", airports, "airport") +
+    section("nearby.universities", universities, "university");
+
+  return html;
+}
+
 
 /* ----------------------------- I18N ENGINE ----------------------------- */
 function getLang() {
@@ -887,7 +1056,7 @@ function showToast(title, msg) {
 })();
 
 /* ----------------------------- LISTING DETAIL PAGE: POPULATE FROM JSON ----------------------------- */
-(function listingDetailPage() {
+(async function listingDetailPage() {
   const root = document.getElementById("listingDetail");
   if (!root) return;
 
@@ -932,6 +1101,47 @@ function showToast(title, msg) {
     const bbox = `${lng - 0.01}%2C${lat - 0.01}%2C${lng + 0.01}%2C${lat + 0.01}`;
     map.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lng}`;
   }
+
+  // Nearby places via Overpass
+  const nearbyRoot = document.getElementById("nearbyList");
+  if (nearbyRoot && item.location?.lat && item.location?.lng) {
+    const lang = getLang();
+    nearbyRoot.innerHTML = `<span class="pill" style="padding:10px 12px;">${t(lang, "nearby.loading") || "Loading nearby places…"}</span>`;
+
+    const { lat, lng } = item.location;
+
+    // Cache to avoid hammering Overpass (and speed up)
+    const cacheKey = `nearby:v1:${id}:${lat.toFixed(4)}:${lng.toFixed(4)}`;
+    const cached = localStorage.getItem(cacheKey);
+
+    try {
+      let data;
+      if (cached) {
+        data = JSON.parse(cached);
+      } else {
+        // radius: tune this (meters). airports might be far → 30000–50000
+        const radiusM = 30000;
+        const json = await fetchOverpass(lat, lng, radiusM);
+        const places = normalizeOverpassElements(json);
+
+        const groups = groupNearby(places);
+        data = {
+          hospitals: sortAndLimit(groups.hospitals, lat, lng, 5),
+          airports: sortAndLimit(groups.airports, lat, lng, 5),
+          universities: sortAndLimit(groups.universities, lat, lng, 5),
+        };
+
+        localStorage.setItem(cacheKey, JSON.stringify(data));
+      }
+
+      const html = renderNearbyUI(data, lang);
+      nearbyRoot.innerHTML = html || `<span class="pill" style="padding:10px 12px;">${t(lang, "nearby.none") || "No nearby places found."}</span>`;
+    } catch (err) {
+      console.error("Nearby Overpass error:", err);
+      nearbyRoot.innerHTML = `<span class="pill" style="padding:10px 12px;">${t(lang, "nearby.error") || "Couldn’t load nearby places right now."}</span>`;
+    }
+  }
+  
 })();
 
 /* ----------------------------- CONTACT FORM (DEMO) ----------------------------- */

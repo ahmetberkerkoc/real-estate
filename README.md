@@ -1,4 +1,4 @@
-# Oakline Realty
+# Tulum Realty
 
 A modern, responsive real estate website built with vanilla HTML, CSS, and JavaScript. Browse properties, explore listings, connect with agents, and schedule tours.
 
