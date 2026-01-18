@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oakline Realty — Listings</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="logo" href="index.html"><span class="logo-badge">🏡</span><span>Oakline Realty</span></a>
+
+        <nav>
+          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+          <ul id="navLinks">
+            <li><a data-page="index.html" href="index.html">Home</a></li>
+            <li><a data-page="listings.html" href="listings.html">Listings</a></li>
+            <li><a data-page="agents.html" href="agents.html">Agents</a></li>
+            <li><a data-page="contact.html" href="contact.html">Contact</a></li>
+            <li><a class="btn primary" href="contact.html">Book a Tour</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h1>Listings</h1>
+          <p>Filter by city, type, and budget.</p>
+        </div>
+        <div class="pill"><span class="dot"></span> Showing <b id="count">6</b> listings</div>
+      </div>
+
+      <div class="panel" style="margin-bottom:12px;">
+        <div class="formGrid">
+          <div class="field">
+            <label for="qCity">City</label>
+            <select id="qCity">
+              <option value="any">Any</option>
+              <option value="istanbul">Istanbul</option>
+              <option value="ankara">Ankara</option>
+              <option value="izmir">Izmir</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qType">Type</label>
+            <select id="qType">
+              <option value="any">Any</option>
+              <option value="apartment">Apartment</option>
+              <option value="villa">Villa</option>
+              <option value="office">Office</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qMin">Min Budget</label>
+            <select id="qMin">
+              <option value="0">No min</option>
+              <option value="200000">200,000</option>
+              <option value="500000">500,000</option>
+              <option value="1000000">1,000,000</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qMax">Max Budget</label>
+            <select id="qMax">
+              <option value="999999999">No max</option>
+              <option value="500000">500,000</option>
+              <option value="1000000">1,000,000</option>
+              <option value="2000000">2,000,000</option>
+              <option value="5000000">5,000,000</option>
+            </select>
+          </div>
+          <button class="btn primary wide" id="applyFilters" type="button">Apply Filters</button>
+        </div>
+      </div>
+
+      <div class="grid" id="listingGrid">
+        <article class="card" data-id="p1" data-city="istanbul" data-type="apartment" data-price="950000">
+          <div class="thumb"><span class="tag">For Sale</span><div class="price">₺950,000</div></div>
+          <div class="content">
+            <div class="titleRow"><h3>Modern Apartment • Kadıköy</h3></div>
+            <div class="meta">Istanbul • 2 bed • 1 bath • 92 m²</div>
+            <div class="facts"><span class="chip">Near metro</span><span class="chip">Balcony</span><span class="chip">Pet-friendly</span></div>
+          </div>
+          <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
+            <button class="btn" type="button" data-action="details">Details</button>
+            <a class="btn primary" href="contact.html">Book Tour</a>
+          </div>
+        </article>
+
+        <article class="card" data-id="p2" data-city="istanbul" data-type="villa" data-price="4200000">
+          <div class="thumb"><span class="tag">For Sale</span><div class="price">₺4,200,000</div></div>
+          <div class="content">
+            <div class="titleRow"><h3>Sea View Villa • Beylikdüzü</h3></div>
+            <div class="meta">Istanbul • 4 bed • 3 bath • 240 m²</div>
+            <div class="facts"><span class="chip">Garden</span><span class="chip">Parking</span><span class="chip">Security</span></div>
+          </div>
+          <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
+            <button class="btn" type="button" data-action="details">Details</button>
+            <a class="btn primary" href="contact.html">Book Tour</a>
+          </div>
+        </article>
+
+        <article class="card" data-id="p3" data-city="ankara" data-type="apartment" data-price="650000">
+          <div class="thumb"><span class="tag">For Rent</span><div class="price">₺650,000</div></div>
+          <div class="content">
+            <div class="titleRow"><h3>City Center Flat • Çankaya</h3></div>
+            <div class="meta">Ankara • 1 bed • 1 bath • 68 m²</div>
+            <div class="facts"><span class="chip">Furnished</span><span class="chip">Elevator</span><span class="chip">Quiet street</span></div>
+          </div>
+          <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
+            <button class="btn" type="button" data-action="details">Details</button>
+            <a class="btn primary" href="contact.html">Book Tour</a>
+          </div>
+        </article>
+
+        <article class="card" data-id="p4" data-city="izmir" data-type="apartment" data-price="780000">
+          <div class="thumb"><span class="tag">For Sale</span><div class="price">₺780,000</div></div>
+          <div class="content">
+            <div class="titleRow"><h3>Bright Apartment • Karşıyaka</h3></div>
+            <div class="meta">Izmir • 2 bed • 1 bath • 88 m²</div>
+            <div class="facts"><span class="chip">Corner unit</span><span class="chip">New kitchen</span><span class="chip">Storage</span></div>
+          </div>
+          <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
+            <button class="btn" type="button" data-action="details">Details</button>
+            <a class="btn primary" href="contact.html">Book Tour</a>
+          </div>
+        </article>
+
+        <article class="card" data-id="p5" data-city="ankara" data-type="office" data-price="1500000">
+          <div class="thumb"><span class="tag">For Sale</span><div class="price">₺1,500,000</div></div>
+          <div class="content">
+            <div class="titleRow"><h3>Office Space • Söğütözü</h3></div>
+            <div class="meta">Ankara • 6 rooms • 2 bath • 140 m²</div>
+            <div class="facts"><span class="chip">High traffic</span><span class="chip">Fiber internet</span><span class="chip">Meeting room</span></div>
+          </div>
+          <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
+            <button class="btn" type="button" data-action="details">Details</button>
+            <a class="btn primary" href="contact.html">Book Tour</a>
+          </div>
+        </article>
+
+        <article class="card" data-id="p6" data-city="izmir" data-type="villa" data-price="3100000">
+          <div class="thumb"><span class="tag">For Sale</span><div class="price">₺3,100,000</div></div>
+          <div class="content">
+            <div class="titleRow"><h3>Family Villa • Urla</h3></div>
+            <div class="meta">Izmir • 3 bed • 2 bath • 190 m²</div>
+            <div class="facts"><span class="chip">Pool-ready</span><span class="chip">Smart home</span><span class="chip">Sunset view</span></div>
+          </div>
+          <div style="margin-top:auto; padding:0 14px 14px; display:flex; gap:10px;">
+            <button class="btn" type="button" data-action="details">Details</button>
+            <a class="btn primary" href="contact.html">Book Tour</a>
+          </div>
+        </article>
+      </div>
+
+      <footer>
+        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
+          <div><b style="color:var(--text)">Oakline Realty</b><br/>© <span data-year></span></div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="pill">hello@oakline.example</span>
+            <span class="pill">+90 212 000 00 00</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <div class="toast" id="toast">
+    <div class="dot" style="margin-top:6px"></div>
+    <div><b id="toastTitle">Saved</b><p id="toastMsg">Done.</p></div>
+    <button class="x" id="toastClose">✕</button>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

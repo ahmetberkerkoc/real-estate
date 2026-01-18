@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oakline Realty — Listing</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="logo" href="index.html"><span class="logo-badge">🏡</span><span>Oakline Realty</span></a>
+
+        <nav>
+          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+          <ul id="navLinks">
+            <li><a data-page="index.html" href="index.html">Home</a></li>
+            <li><a data-page="listings.html" href="listings.html">Listings</a></li>
+            <li><a data-page="agents.html" href="agents.html">Agents</a></li>
+            <li><a data-page="contact.html" href="contact.html">Contact</a></li>
+            <li><a class="btn primary" href="contact.html">Book a Tour</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="panel" id="listingDetail">
+        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+          <div>
+            <div class="pill"><span class="dot"></span> <span id="detailTag">For Sale</span></div>
+            <h1 id="detailTitle" style="margin:10px 0 6px;">Listing</h1>
+            <p id="detailMeta" style="margin:0; color:var(--muted);">—</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <div class="pill" style="padding:10px 12px;"><b id="detailPrice">—</b></div>
+            <a class="btn primary" href="contact.html">Book Tour</a>
+            <a class="btn" href="listings.html">Back to Listings</a>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; display:grid; grid-template-columns: 1.2fr .8fr; gap:12px;">
+          <div class="heroCard" style="min-height:260px;">
+            <div class="heroInner">
+              <h2 style="margin:0 0 8px; font-size:18px;">Overview</h2>
+              <p id="detailDesc" class="sub" style="margin:0;">
+                —
+              </p>
+              <div id="detailChips" class="facts" style="margin-top:12px;"></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 style="margin:0 0 10px; font-size:18px;">Location</h2>
+            <iframe
+              id="osmMap"
+              title="OpenStreetMap"
+              style="width:100%; height:240px; border:0; border-radius:16px;"
+              loading="lazy"
+            ></iframe>
+            <p style="margin:10px 0 0; color:var(--muted); font-size:12px;">
+              Map uses OpenStreetMap embed.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
+          <div><b style="color:var(--text)">Oakline Realty</b><br/>© <span data-year></span></div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="pill">hello@oakline.example</span>
+            <span class="pill">+90 212 000 00 00</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Embedded data used by app.js -->
+  <script id="listingData" type="application/json">
+  [
+    {
+      "id":"p1",
+      "title":"Modern Apartment • Kadıköy",
+      "tag":"For Sale",
+      "cityLabel":"Istanbul",
+      "beds":2, "baths":1, "size":92,
+      "priceLabel":"₺950,000",
+      "description":"Bright, modern apartment near transit with a balcony and renovated kitchen. Ideal for commuting and city living.",
+      "features":["Near metro","Balcony","Pet-friendly","New kitchen"],
+      "location":{"lat":40.9909,"lng":29.0290}
+    },
+    {
+      "id":"p2",
+      "title":"Sea View Villa • Beylikdüzü",
+      "tag":"For Sale",
+      "cityLabel":"Istanbul",
+      "beds":4, "baths":3, "size":240,
+      "priceLabel":"₺4,200,000",
+      "description":"Spacious villa with sea views, secure parking, and a private garden. Great for families and entertaining.",
+      "features":["Garden","Parking","Security","Sea view"],
+      "location":{"lat":41.0110,"lng":28.6410}
+    },
+    {
+      "id":"p3",
+      "title":"City Center Flat • Çankaya",
+      "tag":"For Rent",
+      "cityLabel":"Ankara",
+      "beds":1, "baths":1, "size":68,
+      "priceLabel":"₺650,000",
+      "description":"Cozy furnished flat in the center with elevator access and quiet surroundings. Move-in ready.",
+      "features":["Furnished","Elevator","Quiet street"],
+      "location":{"lat":39.9179,"lng":32.8627}
+    },
+    {
+      "id":"p4",
+      "title":"Bright Apartment • Karşıyaka",
+      "tag":"For Sale",
+      "cityLabel":"Izmir",
+      "beds":2, "baths":1, "size":88,
+      "priceLabel":"₺780,000",
+      "description":"Corner unit with lots of light, upgraded kitchen, and extra storage. Close to shops and cafes.",
+      "features":["Corner unit","New kitchen","Storage"],
+      "location":{"lat":38.4550,"lng":27.1120}
+    },
+    {
+      "id":"p5",
+      "title":"Office Space • Söğütözü",
+      "tag":"For Sale",
+      "cityLabel":"Ankara",
+      "beds":6, "baths":2, "size":140,
+      "priceLabel":"₺1,500,000",
+      "description":"Professional office with meeting room and fiber internet in a high-traffic business district.",
+      "features":["High traffic","Fiber internet","Meeting room"],
+      "location":{"lat":39.9115,"lng":32.8104}
+    },
+    {
+      "id":"p6",
+      "title":"Family Villa • Urla",
+      "tag":"For Sale",
+      "cityLabel":"Izmir",
+      "beds":3, "baths":2, "size":190,
+      "priceLabel":"₺3,100,000",
+      "description":"Comfortable villa with smart-home features and sunset views. Yard is pool-ready with great outdoor space.",
+      "features":["Smart home","Sunset view","Pool-ready"],
+      "location":{"lat":38.3210,"lng":26.7640}
+    }
+  ]
+  </script>
+
+  <div class="toast" id="toast">
+    <div class="dot" style="margin-top:6px"></div>
+    <div><b id="toastTitle">Saved</b><p id="toastMsg">Done.</p></div>
+    <button class="x" id="toastClose">✕</button>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

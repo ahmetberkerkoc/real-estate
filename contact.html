@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oakline Realty — Contact</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="logo" href="index.html"><span class="logo-badge">🏡</span><span>Oakline Realty</span></a>
+
+        <nav>
+          <button class="btn ghost menuBtn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+          <ul id="navLinks">
+            <li><a data-page="index.html" href="index.html">Home</a></li>
+            <li><a data-page="listings.html" href="listings.html">Listings</a></li>
+            <li><a data-page="agents.html" href="agents.html">Agents</a></li>
+            <li><a data-page="contact.html" href="contact.html">Contact</a></li>
+            <li><a class="btn primary" href="listings.html">Browse Listings</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h1>Contact</h1>
+          <p>Tell us what you’re looking for and we’ll get back to you.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <form id="contactForm">
+          <div class="formGrid">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" placeholder="Jane Doe" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" placeholder="+90 5xx xxx xx xx" />
+            </div>
+            <div class="field">
+              <label for="intent">I’m interested in</label>
+              <select id="intent" name="intent">
+                <option>Buying</option>
+                <option>Renting</option>
+                <option>Investing</option>
+                <option>Commercial</option>
+              </select>
+            </div>
+            <div class="field wide">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="City, property type, budget, bedrooms, must-haves..." required></textarea>
+            </div>
+            <button class="btn primary wide" type="submit">Send Message</button>
+          </div>
+          <p style="margin:12px 0 0; color:var(--muted); font-size:12px;">
+            Demo form: no backend connected. Add a server/API later to receive messages.
+          </p>
+        </form>
+      </div>
+
+      <footer>
+        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
+          <div><b style="color:var(--text)">Oakline Realty</b><br/>© <span data-year></span></div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="pill">hello@oakline.example</span>
+            <span class="pill">+90 212 000 00 00</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <div class="toast" id="toast">
+    <div class="dot" style="margin-top:6px"></div>
+    <div><b id="toastTitle">Saved</b><p id="toastMsg">Done.</p></div>
+    <button class="x" id="toastClose">✕</button>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
